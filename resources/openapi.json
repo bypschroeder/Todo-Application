@@ -1,0 +1,436 @@
+
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "TodoItems API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    },
+    {
+      "url": "http://todo.com"
+    }
+  ],
+  "tags": [
+    {
+      "name": "TodoItems",
+      "description": "This is the TodoItems description"
+    }
+  ],
+  "paths": {
+    "/todo-controller/todo/{id}": {
+      "get": {
+        "tags": [
+          "TodoItems"
+        ],
+        "summary": "This is the summary",
+        "description": "this is the description",
+        "externalDocs": {
+          "description": "For more details check the link",
+          "url": "http://todo.com/docs"
+        },
+        "operationId": "todo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The path variable.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TodoEntryDto"
+                },
+                "examples": {
+                  "Success 1": {
+                    "description": "Success 1",
+                    "value": "Object"
+                  },
+                  "Success 2": {
+                    "description": "Success 2",
+                    "value": "Object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TodoItems"
+        ],
+        "summary": "This is the summary",
+        "description": "this is the description",
+        "externalDocs": {
+          "description": "For more details check the link",
+          "url": "http://todo.com/docs"
+        },
+        "operationId": "updateTodo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The path variable.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          },
+          {
+            "name": "title",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "description",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "completed",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TodoEntryDto"
+                },
+                "examples": {
+                  "Success 1": {
+                    "description": "Success 1",
+                    "value": "Object"
+                  },
+                  "Success 2": {
+                    "description": "Success 2",
+                    "value": "Object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "TodoItems"
+        ],
+        "summary": "This is the summary",
+        "description": "this is the description",
+        "externalDocs": {
+          "description": "For more details check the link",
+          "url": "http://todo.com/docs"
+        },
+        "operationId": "deleteTodo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The path variable.",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "example": 1
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/todo-controller/todo": {
+      "post": {
+        "tags": [
+          "TodoItems"
+        ],
+        "summary": "This is the summary",
+        "description": "this is the description",
+        "externalDocs": {
+          "description": "For more details check the link",
+          "url": "http://todo.com/docs"
+        },
+        "operationId": "createTodo",
+        "requestBody": {
+          "description": "This is the requestBody description",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TodoEntryDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Response successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TodoEntryDto"
+                },
+                "examples": {
+                  "Success 1": {
+                    "description": "Success 1",
+                    "value": "Object"
+                  },
+                  "Success 2": {
+                    "description": "Success 2",
+                    "value": "Object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todo-controller/todos": {
+      "get": {
+        "tags": [
+          "TodoItems"
+        ],
+        "summary": "This is the summary",
+        "description": "this is the description",
+        "externalDocs": {
+          "description": "For more details check the link",
+          "url": "http://todo.com/docs"
+        },
+        "operationId": "todos",
+        "responses": {
+          "200": {
+            "description": "Response successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TodoEntryDto"
+                  }
+                },
+                "examples": {
+                  "Success 1": {
+                    "description": "Success 1",
+                    "value": "Object"
+                  },
+                  "Success 2": {
+                    "description": "Success 2",
+                    "value": "Object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todo-controller/todos/title": {
+      "get": {
+        "tags": [
+          "TodoItems"
+        ],
+        "summary": "This is the summary",
+        "description": "this is the description",
+        "externalDocs": {
+          "description": "For more details check the link",
+          "url": "http://todo.com/docs"
+        },
+        "operationId": "getTodoByTitle",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "query",
+            "description": "The Query variable.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "Homework"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TodoEntryDto"
+                },
+                "examples": {
+                  "Success 1": {
+                    "description": "Success 1",
+                    "value": "Object"
+                  },
+                  "Success 2": {
+                    "description": "Success 2",
+                    "value": "Object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todo-controller/todos/criteria": {
+      "get": {
+        "tags": [
+          "TodoItems"
+        ],
+        "summary": "This is the summary",
+        "description": "this is the description",
+        "externalDocs": {
+          "description": "For more details check the link",
+          "url": "http://todo.com/docs"
+        },
+        "operationId": "getTodosByCriteria",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "query",
+            "description": "The Query variable.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "Homework"
+          },
+          {
+            "name": "completed",
+            "in": "query",
+            "description": "The Query variable",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "example": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TodoEntryDto"
+                },
+                "examples": {
+                  "Success 1": {
+                    "description": "Success 1",
+                    "value": "Object"
+                  },
+                  "Success 2": {
+                    "description": "Success 2",
+                    "value": "Object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/todo-controller/todos/completed": {
+      "get": {
+        "tags": [
+          "TodoItems"
+        ],
+        "summary": "This is the summary",
+        "description": "this is the description",
+        "externalDocs": {
+          "description": "For more details check the link",
+          "url": "http://todo.com/docs"
+        },
+        "operationId": "getTodoByCompleted",
+        "parameters": [
+          {
+            "name": "completed",
+            "in": "query",
+            "description": "The Query variable.",
+            "required": true,
+            "schema": {
+              "type": "boolean"
+            },
+            "example": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TodoEntryDto"
+                },
+                "examples": {
+                  "Success 1": {
+                    "description": "Success 1",
+                    "value": "Object"
+                  },
+                  "Success 2": {
+                    "description": "Success 2",
+                    "value": "Object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "TodoEntryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "completed": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
